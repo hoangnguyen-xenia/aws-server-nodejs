@@ -15,11 +15,16 @@ jobs:
       - restore_cache:
            name: Restore Yarn Package Cache
            keys:
-             - m2-yarn-packages-{{ checksum "package.json" }}
-      - node/install-packages:
-          cache-path: ~/aws-server-nodejs/node_modules
-          override-ci-command: npm install
-      - run: npm run test
+             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      - run: 
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+           name: Save Yarn Package Cache
+           key: m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+           paths:
+             - ./node_modules/
+  
 
 workflows:
   test_my_app:
