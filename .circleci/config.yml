@@ -28,7 +28,6 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh -i "learn-ec2.pem" ubuntu@18.139.226.17 |
-            ls
 workflows:
   test_my_app:
     jobs:
