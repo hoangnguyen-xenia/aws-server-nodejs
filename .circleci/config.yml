@@ -12,6 +12,10 @@ jobs:
     executor: node/default
     steps:
       - checkout
+      - restore_cache:
+           name: Restore Yarn Package Cache
+           keys:
+             - m2-yarn-packages-{{ checksum "package.json" }}
       - node/install-packages:
           cache-path: ~/aws-server-nodejs/node_modules
           override-ci-command: npm install
