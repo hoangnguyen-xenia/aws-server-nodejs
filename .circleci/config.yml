@@ -1,7 +1,24 @@
 version: 2.1
+machine:
+    node:
+        version: 14.0.0
 orbs:
-  node: circleci/node@3.0.0
+  node: circleci/node@4.2.0
+
+working_directory: ~/aws-server-nodejs/src/
+
+jobs:
+   deploy:
+     machine:
+       enabled: true
+     steps:
+       - run:
+           name: Deploy Over SSH
+           command: |
+             ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+
 workflows:
-  node-tests:
-    jobs:
-      - node/test
+   version: 2
+   build-and-deploy:
+     jobs:
+       - deploy
