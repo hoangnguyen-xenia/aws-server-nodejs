@@ -27,7 +27,8 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh ubuntu@ip-172-31-25-196 |
+            ssh $ubuntu@$18.139.226.17 |
+            ls
 workflows:
   test_my_app:
     jobs:
