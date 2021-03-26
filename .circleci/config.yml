@@ -1,24 +1,23 @@
-version: 2.1
+version: '2.1'
+
 machine:
     node:
         version: 14.0.0
+
 orbs:
   node: circleci/node@4.2.0
 
-working_directory: ~/aws-server-nodejs/src/
-
 jobs:
-   deploy:
-     machine:
-       enabled: true
-     steps:
-       - run:
-           name: Deploy Over SSH
-           command: |
-             ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+  test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          cache-path: ~/aws-server-nodejs/node_modules
+          override-ci-command: npm install
+      - run: npm run test
 
 workflows:
-   version: 2
-   build-and-deploy:
-     jobs:
-       - deploy
+  test_my_app:
+    jobs:
+      - test
