@@ -24,10 +24,9 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh -i "learn-ec2.pem" ubuntu@18.139.226.17
+      - run: ls |
+             tar -czvf snapshot.tar.gz ~/project |
+             ls
 workflows:
   test_my_app:
     jobs:
