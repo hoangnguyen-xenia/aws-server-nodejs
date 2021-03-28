@@ -24,8 +24,9 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-      - run: ls |
-             tar -czvf snapshot.tar.gz ./project |
+      - run: cd |
+             ls | 
+             tar -czvf snapshot.tar.gz ../project |
              ls
 workflows:
   test_my_app:
