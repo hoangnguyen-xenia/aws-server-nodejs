@@ -9,6 +9,7 @@ orbs:
 
 jobs:
   test:
+    working_directory: ~/project
     executor: node/default
     steps:
       - checkout
