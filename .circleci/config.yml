@@ -25,16 +25,21 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      - run: cd |
+             ls 
   deploy:
    machine: 
      enabled: true
-   working_directory: ~/project
+   working_directory: ~/flapweb-auth-service
    steps: 
      - run:
          name: Deploy Over SSH
          command: | 
+            ls |
+            cd |
             ls
 workflows:
   test_my_app:
     jobs:
       - test
+      - deploy
