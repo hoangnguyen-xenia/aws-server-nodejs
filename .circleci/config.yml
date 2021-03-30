@@ -33,9 +33,9 @@ jobs:
    working_directory: ~/project
    steps: 
      - run: |
-          ssh-keyscan $FTP_HOST >> ~/.ssh/known_hosts |
-          ls | 
-          scp -i index.js ubuntu@18.139.226.17:/
+          # ssh -p your_port_number your_user@your_host "cd ../path/to/your/project; git pull; pm2 start hello_sts"; | 
+          ssh ubuntu@18.139.226.17
+          # scp -i index.js ubuntu@18.139.226.17:/
 workflows:
   test_my_app:
     jobs:
