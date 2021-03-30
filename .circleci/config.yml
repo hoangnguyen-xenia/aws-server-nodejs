@@ -27,7 +27,7 @@ jobs:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
       - run: cd |
              ls | 
-             ssh-keyscan 18.139.226.17 >> ~/.ssh/known_hosts |
+             ssh-keyscan -H 18.139.226.17 >> ~/.ssh/known_hosts |
              ssh ubuntu@18.139.226.17 "ls && cd project && ls"
 workflows:
   test_my_app:
