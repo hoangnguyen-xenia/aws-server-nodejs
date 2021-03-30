@@ -28,7 +28,8 @@ jobs:
       - run: cd |
              ls | 
              ssh-keyscan 18.139.226.17 >> ~/.ssh/known_hosts |
-             scp index.js ubuntu@18.139.226.17:/
+             ssh ubuntu@18.139.226.17 |
+             ls
 workflows:
   test_my_app:
     jobs:
