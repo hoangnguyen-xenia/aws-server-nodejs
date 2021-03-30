@@ -31,7 +31,6 @@ jobs:
       - run: cd |
           ls |
           ssh -o StrictHostKeyChecking=no index.js ubuntu@18.139.226.17 |
-          cd aws/ |
           ls
 workflows:
   test_my_app:
