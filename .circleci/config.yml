@@ -35,6 +35,7 @@ jobs:
      - run:
          name: Deploy Over SSH
          command: | 
+            ssh ubuntu@18.139.226.17 |
             ls |
             cd |
             ls
