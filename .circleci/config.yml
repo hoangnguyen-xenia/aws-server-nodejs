@@ -26,7 +26,8 @@ jobs:
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
       - run: cd |
-             ls | ssh ubuntu@18.139.226.17
+             ls | ssh ubuntu@18.139.226.17 |
+             yes
 workflows:
   test_my_app:
     jobs:
