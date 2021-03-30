@@ -35,11 +35,7 @@ jobs:
      - run:
          name: Deploy Over SSH
          command: | 
-            ls |
-            ssh ubuntu@18.139.226.17 |
-            ls |
-            cd |
-            ls
+            scp -i index.js ubuntu@18.139.226.17:/
 workflows:
   test_my_app:
     jobs:
