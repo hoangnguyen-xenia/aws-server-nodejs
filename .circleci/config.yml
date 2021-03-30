@@ -30,11 +30,12 @@ jobs:
   deploy:
    machine: 
      enabled: true
-   working_directory: ~/flapweb-auth-service
+   working_directory: ~/project
    steps: 
      - run:
          name: Deploy Over SSH
          command: | 
+            ls |
             ssh ubuntu@18.139.226.17 |
             ls |
             cd |
