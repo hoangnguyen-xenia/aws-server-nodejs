@@ -25,9 +25,11 @@ jobs:
           name: Restore Yarn Package Cache
           keys:
             - m2-yarn-packages-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      - add_ssh_keys:
+          fingerprints:
+            - "03:d7:bc:d2:7f:0a:50:90:43:1c:ba:14:72:b6:39:63"
       - run: cd |
              ls | 
-             ssh-keyscan -H 18.139.226.17 >> ~/.ssh/known_hosts |
              ssh ubuntu@18.139.226.17 "ls && cd project && ls"
 workflows:
   test_my_app:
